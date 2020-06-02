@@ -1,0 +1,31 @@
+{% extends 'books/base.html' %}
+{% block title%}Book Details{% endblock %}
+{% block body%}
+
+ <div class="col-sm-4 col-md-3">
+            <div class="panel panel-default">
+                <div class="panel-body">
+                    <a href="{% url 'books:details' book.id %}">
+                        {% if book.cover_img %}
+                            <img src="{{ book.cover_img }}" class="img-responsive">
+                        {% else %}
+                            <h3>No image to display</h3>
+                        {% endif %}
+                    </a>
+                    <li> Position           : {{ book.id }}</li>
+                    <li> Title              : {{book.book_title }}</li>
+                    <li> Author             : {{ book.author }}</li>
+                    <li> Type of Book       : {{book.book_type }}</li>
+                    <li> Rating             : {{ book.rating }}</li>
+                    <li> Price              : {{ book.price }}</li>
+                    <li> Count of Reviews   : {{ book.reviews_count }}</li>
+                </div>
+            </div>
+ </div>
+
+{% if error_message%}
+    <p><strong>{{ error_message }}</strong></p>
+{% endif %}
+
+
+{% endblock %}
